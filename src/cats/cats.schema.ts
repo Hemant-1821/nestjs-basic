@@ -1,5 +1,5 @@
 import * as mongoose from 'mongoose';
-import { ObjectType, Field, Int, InputType } from 'type-graphql';
+import { ObjectType, Field, Int, InputType,ID } from '@nestjs/graphql';
 
 export const CatSchema = new mongoose.Schema({
     name: String,
@@ -16,6 +16,8 @@ export interface Cat extends mongoose.Document {
 
 @ObjectType()
 export class CatType {
+    @Field(() => ID)
+    id: string;
     @Field()
     readonly name: string;
     @Field(() => Int)

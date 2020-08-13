@@ -1,6 +1,6 @@
 import { Resolver,Query, Mutation, Args } from "@nestjs/graphql";
 import { CatsService  } from './cats.service'
-import { CatType, CatInput } from "./cats.schema";
+import { CatType, CatInput } from './cats.schema';
 
 @Resolver()
 export class catsResolver {
@@ -19,7 +19,7 @@ export class catsResolver {
   }
 
   @Mutation(() => CatType)  
-  async createCat(@Args('input') input: CatInput): Promise<any> {
+  async createCat(@Args('input') input: CatInput): Promise<CatInput> {
     return this.catsService.create(input);
   }
 }

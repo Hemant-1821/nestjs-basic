@@ -7,11 +7,11 @@ import { Cat, CatInput } from './cats.schema';
 export class CatsService {
   constructor(@InjectModel('Cat') private readonly catModel: Model<Cat>) {}
 
-  async create(createCatDto: CatInput): Promise<string> {
+  async create(createCatDto: CatInput): Promise<CatInput> {
     try {
       const createdCat = new this.catModel(createCatDto);
       const result =  await createdCat.save();
-      return result._id
+      return result
     }
     catch(Error) {
       throw new Error('Something Failed!')

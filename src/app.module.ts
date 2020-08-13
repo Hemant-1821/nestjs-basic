@@ -7,6 +7,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ProductsModule } from './products/products.module';
 import { CatsModule } from './cats/cats.module';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [ GraphQLModule.forRoot({
@@ -17,7 +19,9 @@ import { CatsModule } from './cats/cats.module';
              ConfigModule.forRoot({
               envFilePath: '.env',
              }),
-             MongooseModule.forRoot(process.env.API_KEY_MONGO)],
+             MongooseModule.forRoot(process.env.API_KEY_MONGO),
+             AuthModule,
+             UsersModule],
   controllers: [AppController],
   providers: [AppService],
 })
